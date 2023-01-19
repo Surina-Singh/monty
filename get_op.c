@@ -2,7 +2,6 @@
 
 /**
  * get_opcodes - selects the correct opcode to perform
- *
  * @opc: opcode passed
  *
  * Return: pointer to the function that executes the opcode

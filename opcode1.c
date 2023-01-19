@@ -1,11 +1,9 @@
 #include "monty.h"
 
 /**
- * _push - pushes an element to the stack
- *
- * @doubly: head of the linked list
- * @cline: line number
- * Return: no return
+ * _push - Pushes an element to the stack
+ * @doubly: Head
+ * @cline: Line number
  */
 void _push(stack_t **doubly, unsigned int cline)
 {
@@ -39,11 +37,9 @@ void _push(stack_t **doubly, unsigned int cline)
 }
 
 /**
- * _pall - prints all values on the stack
- *
- * @doubly: head of the linked list
- * @cline: line numbers
- * Return: no return
+ * _pall - Prints all values on the stack
+ * @doubly: Head
+ * @cline: Line numbers
  */
 void _pall(stack_t **doubly, unsigned int cline)
 {
@@ -60,11 +56,9 @@ void _pall(stack_t **doubly, unsigned int cline)
 }
 
 /**
- * _pint - prints the value at the top of the stack
- *
- * @doubly: head of the linked list
+ * _pint - Prints the value at the top of the stack
+ * @doubly: Head
  * @cline: line number
- * Return: no return
  */
 void _pint(stack_t **doubly, unsigned int cline)
 {
@@ -82,11 +76,9 @@ void _pint(stack_t **doubly, unsigned int cline)
 }
 
 /**
- * _pop - removes the top element of the stack
- *
- * @doubly: head of the linked list
- * @cline: line number
- * Return: no return
+ * _pop - Removes the top element of the stack
+ * @doubly: Head
+ * @cline: Line number
  */
 void _pop(stack_t **doubly, unsigned int cline)
 {
@@ -104,11 +96,9 @@ void _pop(stack_t **doubly, unsigned int cline)
 }
 
 /**
- * _swap - swaps the top two elements of the stack
- *
- * @doubly: head of the linked list
- * @cline: line number
- * Return: no return
+ * _swap - Swaps the top two elements of the stack
+ * @doubly: Head
+ * @cline: Line number
  */
 void _swap(stack_t **doubly, unsigned int cline)
 {

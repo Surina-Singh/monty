@@ -1,11 +1,9 @@
 #include "monty.h"
 
 /**
- * _div - divides the second element by the top element of the stack
- *
- * @doubly: head of the linked list
- * @cline: line number;
- * Return: no return
+ * _div - Divides the second element by the top element of the stack
+ * @doubly: Head
+ * @cline: Line number
  */
 void _div(stack_t **doubly, unsigned int cline)
 {
@@ -37,11 +35,9 @@ void _div(stack_t **doubly, unsigned int cline)
 }
 
 /**
- * _mul - multiplies the top element to the second top element of the stack
- *
- * @doubly: head of the linked list
- * @cline: line number;
- * Return: no return
+ * _mul - Multiplies the top element to the second top element of the stack
+ * @doubly: Head
+ * @cline: Line number
  */
 void _mul(stack_t **doubly, unsigned int cline)
 {
@@ -66,12 +62,9 @@ void _mul(stack_t **doubly, unsigned int cline)
 }
 
 /**
- * _mod - computes the rest of the division of the second element
- * by the top element of the stack
- *
- * @doubly: head of the linked list
- * @cline: line number;
- * Return: no return
+ * _mod - Modular of the top 2 elements of the stack
+ * @doubly: Head
+ * @cline: Line number
  */
 void _mod(stack_t **doubly, unsigned int cline)
 {
@@ -102,11 +95,9 @@ void _mod(stack_t **doubly, unsigned int cline)
 	_pop(doubly, cline);
 }
 /**
- * _pchar - print the char value of the first element
- *
- * @doubly: head of the linked list
- * @cline: line number;
- * Return: no return
+ * _pchar - Print the char value of the first element
+ * @doubly: Head
+ * @cline: Line number
  */
 void _pchar(stack_t **doubly, unsigned int cline)
 {
@@ -126,11 +117,9 @@ void _pchar(stack_t **doubly, unsigned int cline)
 }
 
 /**
- * _pstr - prints the string of the stack
- *
- * @doubly: head of the linked list
- * @cline: line number;
- * Return: no return
+ * _pstr - Prints the string of the stack
+ * @doubly: Head
+ * @cline: Line number
  */
 void _pstr(stack_t **doubly, unsigned int cline)
 {
