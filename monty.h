@@ -1,11 +1,13 @@
-#ifndef MONTYH
-#define MONTYH
+#ifndef MONTY
+#define MONTY
 
 #include <stdio.h>
 #include <stdlib.h>
-
-#define STACKMODE 0
-#define QUEUEMODE 1
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <ctype.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -14,7 +16,7 @@
  * @next: points to the next element of the stack (or queue)
  *
  * Description: doubly linked list node structure
- * for stack, queues, LIFO, FIFO
+ * for stack, queues, LIFO, FIFO Holberton project
  */
 typedef struct stack_s
 {
@@ -24,11 +26,34 @@ typedef struct stack_s
 } stack_t;
 
 /**
- * struct instruction_s - opcoode and its function
+ * struct globals - global structure to use in the functions
+ * @lifo: is stack or queue
+ * @cont: current line
+ * @arg: second parameter inside the current line
+ * @head: doubly linked list
+ * @fd: file descriptor
+ * @buffer: input text
+ *
+ * Description: doubly linked list node structure
+ * for stack, queues, LIFO, FIFO Holberton project
+ */
+typedef struct globals
+{
+	int lifo;
+	unsigned int cont;
+	char  *arg;
+	stack_t *head;
+	FILE *fd;
+	char *buffer;
+} global_t;
+
+/**
+ * struct instruction_s - opcode and its function
  * @opcode: the opcode
  * @f: function to handle the opcode
  *
  * Description: opcode and its function
+ * for stack, queues, LIFO, FIFO Holberton project
  */
 typedef struct instruction_s
 {
@@ -36,69 +61,43 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-/**
- * union montyfunctype - opcoode and its function
- * @toponly: pointer for top
- * @pushmode: uses the push function and pointers
- * @topbot: pointers for top and bottom
- *
- * Description: Handles pointers for top bottom and push of stack
- */
-union montyfunctype
-{
-	void (*toponly)(stack_t **top);
-	void (*pushmode)(stack_t **top, stack_t **bot, int val, int mode);
-	void (*topbot)(stack_t **top, stack_t **bot);
-};
-/**
- * struct optype - opcoode and its function
- * @opcode: the opcode
- * @func: function to handle the opcode
- *
- * Description: Operation codes and function for the project
- */
-typedef struct optype
-{
-	char *opcode;
-	union montyfunctype func;
-} optype;
+extern global_t vglo;
 
-/**
- * struct montyglob - Structure to use global variables
- * @buffer: buffer for monty program
- * @linenum: line numbers
- * @script: test file
- *
- * Description: structure to use global variables
- */
-typedef struct montyglob
-{
-	char *buffer;
-	unsigned long linenum;
-	FILE *script;
-} montyglob;
+/* opcode_instructuions*/
+void _push(stack_t **stack, unsigned int line_number);
+void _pall(stack_t **stack, unsigned int line_number);
+void _pint(stack_t **doubly, unsigned int cline);
+void _pop(stack_t **doubly, unsigned int cline);
+void _swap(stack_t **doubly, unsigned int cline);
+void _queue(stack_t **doubly, unsigned int cline);
+void _stack(stack_t **doubly, unsigned int cline);
+void _add(stack_t **doubly, unsigned int cline);
+void _nop(stack_t **doubly, unsigned int cline);
+void _sub(stack_t **doubly, unsigned int cline);
+void _div(stack_t **doubly, unsigned int cline);
+void _mul(stack_t **doubly, unsigned int cline);
+void _mod(stack_t **doubly, unsigned int cline);
+void _pchar(stack_t **doubly, unsigned int cline);
+void _pstr(stack_t **doubly, unsigned int cline);
+void _rotl(stack_t **doubly, unsigned int cline);
+void _rotr(stack_t **doubly, unsigned int cline);
 
-/* from monty_parse.c */
-void exitwrap(int exitcode, char *existring, stack_t *top);
+/*get function*/
+void (*get_opcodes(char *opc))(stack_t **stack, unsigned int line_number);
 
-/* op_stack.c */
-void push(stack_t **top, stack_t **bot, int val, int mode);
-void pop(stack_t **top);
-void swap(stack_t **top, stack_t **bot);
-void rotl(stack_t **top, stack_t **bot);
-void rotr(stack_t **top, stack_t **bot);
+/*imported functions*/
+int _sch(char *s, char c);
+char *_strtoky(char *s, char *d);
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+void *_calloc(unsigned int nmemb, unsigned int size);
+int _strcmp(char *s1, char *s2);
 
-/* op_print.c */
-void pall(stack_t **top);
-void pint(stack_t **top);
-void pchar(stack_t **top);
-void pstr(stack_t **top);
+/* doubly linked list functions */
+stack_t *add_dnodeint_end(stack_t **head, const int n);
+stack_t *add_dnodeint(stack_t **head, const int n);
+void free_dlistint(stack_t *head);
 
-/* op_math.c */
-void add(stack_t **top);
-void sub(stack_t **top);
-void mul(stack_t **top);
-void _div(stack_t **top);
-void mod(stack_t **top);
+/* main */
+void free_vglo(void);
 
 #endif
