@@ -14,7 +14,7 @@
  * @next: points to the next element of the stack (or queue)
  *
  * Description: doubly linked list node structure
- * for stack, queues, LIFO, FIFO Holberton project
+ * for stack, queues, LIFO, FIFO
  */
 typedef struct stack_s
 {
@@ -29,7 +29,6 @@ typedef struct stack_s
  * @f: function to handle the opcode
  *
  * Description: opcode and its function
- * for stack, queues, LIFO, FIFO Holberton project
  */
 typedef struct instruction_s
 {
@@ -79,23 +78,23 @@ typedef struct montyglob
 	FILE *script;
 } montyglob;
 
-/* from montyparse.c */
+/* from monty_parse.c */
 void exitwrap(int exitcode, char *existring, stack_t *top);
 
-/* opstack.c */
+/* op_stack.c */
 void push(stack_t **top, stack_t **bot, int val, int mode);
 void pop(stack_t **top);
 void swap(stack_t **top, stack_t **bot);
 void rotl(stack_t **top, stack_t **bot);
 void rotr(stack_t **top, stack_t **bot);
 
-/* opprint.c */
+/* op_print.c */
 void pall(stack_t **top);
 void pint(stack_t **top);
 void pchar(stack_t **top);
 void pstr(stack_t **top);
 
-/* opmath.c */
+/* op_math.c */
 void add(stack_t **top);
 void sub(stack_t **top);
 void mul(stack_t **top);
